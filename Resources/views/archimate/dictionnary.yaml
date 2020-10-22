@@ -1,0 +1,123 @@
+dictionnary:
+
+    relationship:
+        render:
+            patterns:
+                - Rel_Type(from_name, to_name, "desc")
+            replaces:
+                Type: type
+                from_name: from.name
+                to_name: to.name
+                desc: desc
+        with:
+            - [from, to]
+        types:
+            - 'access'
+            - 'aggregation'
+            - 'assignment'
+            - 'association'
+            - 'composition'
+            - 'flow'
+            - 'influence'
+            - 'realization'
+            - 'serving'
+            - 'specialization'
+            - 'triggering'
+
+    relationship-directionnal:
+        render:
+            patterns:
+                - Rel_Type_Direction(from_name, to_name, "desc")
+            replaces:
+                Type: type
+                _Direction: _direction
+                from_name: from.name
+                to_name: to.name
+                desc: desc
+
+        extends: relationship
+        with:
+            - [from, to, direction]
+            - direction
+
+    element-application:
+        render:
+            patterns:
+                - Application_Type(name, "desc")
+            replaces:
+                Type: type
+                name: name
+                desc: desc
+        types:
+            - 'collaboration'
+            - 'component'
+            - 'data-object'
+            - 'event'
+            - 'function'
+            - 'interaction'
+            - 'interface'
+            - 'process'
+            - 'service'
+    element-business:
+        render:
+            patterns:
+                - Business_Type(name, "desc")
+            replaces:
+                Type: type
+                name: name
+                desc: desc
+        types:
+            - 'activity'
+            - 'actor'
+            - 'collaboration'
+            - 'contract'
+            - 'event'
+            - 'function'
+            - 'interaction'
+            - 'interface'
+            - 'location'
+            - 'meaning'
+            - 'object'
+            - 'process'
+            - 'product'
+            - 'representation'
+            - 'role'
+            - 'service'
+            - 'value'
+
+    element-technology:
+        render:
+            patterns:
+                - Technology_Type(name, "desc")
+            replaces:
+                Type: type
+                name: name
+                desc: desc
+        types:
+            - 'artifact'
+            - 'collaboration'
+            - 'path'
+            - 'device'
+            - 'event'
+            - 'function'
+            - 'interface'
+            - 'interaction'
+            - 'node'
+            - 'process'
+            - 'service'
+            - 'system-software'
+    group:
+        render:
+            patterns:
+                - Type(name, "desc"){
+                - children
+                - }
+            replaces:
+                Type: type
+                name: name
+                desc: desc
+                children: _children_
+        is_wrapper: true
+        types:
+            - 'group'
+            - 'grouping'

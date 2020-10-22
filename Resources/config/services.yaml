@@ -1,0 +1,16 @@
+services:
+    Tehla\PumlBundle\:
+        resource: '../../*'
+        exclude: '../../{Asset,Helper,Exception}'
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Tehla\PumlBundle\Maker\PumlMaker:
+        tags: ['maker.command']
+
+    Tehla\PumlBundle\EventListener\TempFileListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.terminate }

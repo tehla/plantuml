@@ -1,0 +1,81 @@
+dictionnary:
+
+    note:
+        render:
+            patterns:
+                - note as "Name"
+                - children
+                - end note
+            replaces:
+                Name: name
+                children: _children_
+        is_wrapper: true
+        types: ['']
+
+    note-of:
+        render:
+            patterns:
+                - note Position of "OfAsset"
+                - children
+                - end note
+            replaces:
+                Position: position
+                OfAsset: ofAsset
+                children: _children_
+        with:
+            - [position, ofAsset]
+        is_wrapper: true
+        types: ['']
+
+    class-diagram:
+        render:
+            patterns:
+                - type "name" << desc >> {
+                - children
+                - }
+            replaces:
+                type: type
+                name: name
+                desc: desc
+                children: _children_
+        with:
+            - [name, desc]
+        is_wrapper: true
+        types:
+            - class
+            - interface
+            - enum
+            - abstract
+
+    package:
+        render:
+            patterns:
+                - package "name" <<Type>> {
+                - children
+                - }
+            replaces:
+                desc: desc
+                children: _children_
+        with:
+            - name
+        is_wrapper: true
+        types:
+            - Node
+            - Rectangle
+            - Folder
+            - Frame
+            - Cloud
+            - Database
+
+    component:
+        render:
+            patterns:
+                - component "name" [
+                - children
+                - ]
+            replaces:
+                name: name
+                children: _children_
+        with:
+            - name
+        types: ['']
